@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -21,8 +22,13 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <div className="relative min-h-screen bg-brown-950 text-brown-100 selection:bg-accent-gold selection:text-brown-950">
+   return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="relative min-h-screen bg-brown-950 text-brown-100 selection:bg-accent-gold selection:text-brown-950"
+    >
       {/* Background Gradient Effect */}
       <div id="gradient-overlay" />
       
@@ -47,7 +53,7 @@ function App() {
 
       {/* Footer */}
       <Footer />
-    </div>
+    </motion.div>
   );
 }
 

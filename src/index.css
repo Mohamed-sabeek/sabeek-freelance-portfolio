@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   body {
     @apply antialiased text-brown-100 bg-brown-950 font-sans;
@@ -17,10 +21,10 @@
     @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
   }
   .glass-brown {
-    @apply bg-brown-800/10 backdrop-blur-md border border-brown-700/30;
+    @apply bg-brown-900/40 backdrop-blur-xl border border-brown-700/30 shadow-2xl;
   }
   .nav-blur {
-    @apply bg-brown-950/80 backdrop-blur-xl border-b border-brown-900/50;
+    @apply bg-brown-950/80 backdrop-blur-2xl border-b border-brown-900/80 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)];
   }
   .btn-primary {
     @apply px-8 py-4 bg-accent-gold text-brown-950 font-bold rounded-lg shadow-lg hover:shadow-accent-gold/40 hover:scale-105 active:scale-95 transition-all duration-300;

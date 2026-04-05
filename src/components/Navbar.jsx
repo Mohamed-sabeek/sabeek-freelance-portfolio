@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
@@ -16,6 +16,27 @@ const navLinks = [
 
 export default function Navbar({ scrolled }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'skills', 'projects', 'services', 'pricing', 'testimonials', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'nav-blur' : 'bg-transparent py-2'}`}>
@@ -26,26 +47,35 @@ export default function Navbar({ scrolled }) {
             href="#home"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-display font-bold text-white tracking-tighter"
+            whileHover={{ scale: 1.05 }}
+            className="text-2xl font-display font-bold text-white tracking-tighter group flex items-center"
           >
-            SABEEK<span className="text-accent-gold">.</span>
+            <span className="group-hover:text-accent-gold transition-colors duration-300">SABEEK</span>
+            <span className="text-accent-gold group-hover:scale-150 transition-transform duration-300 ml-0.5">.</span>
           </motion.a>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             <div className="flex space-x-6">
               {navLinks.map((link) => (
-                <a key={link.name} href={link.href} className="text-sm font-medium text-brown-200 hover:text-accent-gold transition-colors duration-200">
+                <a 
+                   key={link.name} 
+                   href={link.href} 
+                   className={`relative text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 py-2 group ${activeSection === link.href.slice(1) ? 'text-accent-gold' : 'text-brown-300 hover:text-white'}`}
+                >
                   {link.name}
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent-gold transform origin-left transition-transform duration-300 ${activeSection === link.href.slice(1) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-50'}`} />
                 </a>
               ))}
             </div>
-            <a 
+            <motion.a 
               href="#contact" 
-              className="px-6 py-2.5 bg-accent-gold text-brown-950 font-bold rounded-lg text-sm hover:scale-105 transition-transform duration-200"
+              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(212,175,55,0.3)' }}
+              whileActive={{ scale: 0.95 }}
+              className="px-6 py-2.5 bg-accent-gold text-brown-950 font-bold rounded-xl text-xs uppercase tracking-widest shadow-lg transition-all duration-300"
             >
               Hire Me
-            </a>
+            </motion.a>
           </div>
 
           {/* Mobile Toggle */}
