@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-brown-100 bg-brown-950 font-sans;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-white tracking-tight;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  .glass-brown {
+    @apply bg-brown-800/10 backdrop-blur-md border border-brown-700/30;
+  }
+  .nav-blur {
+    @apply bg-brown-950/80 backdrop-blur-xl border-b border-brown-900/50;
+  }
+  .btn-primary {
+    @apply px-8 py-4 bg-accent-gold text-brown-950 font-bold rounded-lg shadow-lg hover:shadow-accent-gold/40 hover:scale-105 active:scale-95 transition-all duration-300;
+  }
+  .btn-secondary {
+    @apply px-8 py-4 border-2 border-accent-gold text-accent-gold font-bold rounded-lg hover:bg-accent-gold/10 hover:scale-105 active:scale-95 transition-all duration-300;
+  }
+}
+
+/* Float Animation */
+@keyframes float {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(-30px) translateX(20px) rotate(2deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Gradient Blob Animation Overlay */
+#gradient-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle at 10% 20%, rgba(197, 160, 89, 0.08) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(140, 98, 57, 0.12) 0%, transparent 40%),
+              radial-gradient(circle at 50% 50%, rgba(61, 42, 14, 0.2) 0%, transparent 60%);
+}
+
+/* Custom Scrollbar for Dropdowns / Menus */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
