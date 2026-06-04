@@ -14,13 +14,15 @@ This portfolio showcases my services, projects, pricing, and allows clients to c
 ## ✨ Features
 
 * ⚡ Fast & optimized (Vite)
-* 🎨 Modern UI with dark + gold theme
-* 📱 Fully responsive design
+* 🎨 Modern UI with luxury dark + gold theme
+* 📱 Fully responsive layout with centered mobile headers
+* 🧑‍💻 Comprehensive Project Showcase (featuring client work like **Haaris Cakes** & **Al Safi Beda**)
+* 📂 Dynamic **All Projects Page** with state-based hash routing (`#all-projects`)
+* ⭐ Side-by-side **Testimonial Section** showcasing real client reviews
+* 💬 Dedicated **All Reviews Page** with hash-based routing (`#all-reviews`)
 * 📊 Pricing section with service tiers
 * 📬 Contact form with EmailJS integration
 * 💬 WhatsApp direct contact option
-* 🧑‍💻 Project showcase section
-* ⭐ Testimonials (client feedback ready)
 
 ---
 
